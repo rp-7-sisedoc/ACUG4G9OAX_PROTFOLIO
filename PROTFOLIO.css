@@ -1,0 +1,932 @@
+/* Table of Contents
+--------------------
+1. Global Styles & Variables
+2. Typography & Layout Base
+3. Utility Classes & Badges
+4. Header / Hero Section
+5. Hero Telemetry Dashboard Component
+6. Mobile Navigation
+7. About Section
+8. Bento Grid System
+9. Premium Cards (Skills & Projects)
+10. Contact Section
+11. Footer Section
+12. Animations
+-------------------- */
+
+/* 1. Global Styles & Variables
+--------------------------------------------- */
+:root {
+    --bg-main: #09090b;          /* Ultra-deep modern dark (Zinc 950) */
+    --bg-card: #18181b;          /* Sleek container dark (Zinc 900) */
+    --border-subtle: #27272a;     /* Sharp, minimalist dividers (Zinc 800) */
+    --accent-glow: #00ff6c;       /* Vibrant neon green laser-focused glow */
+    --accent: var(--accent-glow);
+    --text-primary: #f4f4f5;      /* Crisp off-white (Zinc 100) */
+    --text-muted: #a1a1aa;         /* Elegant gray (Zinc 400) */
+    --font-family-base: "Space Grotesk", "Montserrat", sans-serif;
+    --transition-speed: 0.3s;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-family-base);
+    overflow-x: hidden;
+}
+
+/* 2. Typography & Layout Base
+--------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+h2 {
+    text-transform: uppercase;
+    font-size: 2.25rem;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    color: var(--text-muted);
+}
+
+hr {
+    width: 4.5rem;
+    height: 2px;
+    background-color: var(--accent-glow);
+    border: none;
+    margin: 1rem auto 2.5rem;
+    box-shadow: 0 0 10px rgba(0, 255, 108, 0.4);
+}
+
+.text-left hr {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.minimal-hr {
+    width: 4.5rem;
+    height: 2px;
+    background-color: var(--accent);
+    border: none;
+    margin: 1rem 0 2.5rem;
+    box-shadow: 0 0 10px rgba(0, 255, 108, 0.4);
+}
+
+/* 3. Utility Classes & Badges
+--------------------------------------------- */
+.bold {
+    font-weight: 700;
+}
+
+.section-tag {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--accent-glow);
+    letter-spacing: 3px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    font-family: "Space Grotesk", sans-serif;
+}
+
+.badge-ai {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 255, 108, 0.08);
+    border: 1px solid rgba(0, 255, 108, 0.25);
+    color: var(--accent-glow);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    border-radius: 6px;
+    box-shadow: 0 0 15px rgba(0, 255, 108, 0.05);
+}
+
+.btn {
+    padding: 0.75rem 2rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: "Space Grotesk", sans-serif;
+}
+
+.btn-primary {
+    background-color: var(--accent-glow);
+    border: 1px solid var(--accent-glow);
+    color: #09090b !important;
+    box-shadow: 0 4px 14px rgba(0, 255, 108, 0.15);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--accent-glow) !important;
+    border-color: var(--accent-glow);
+    box-shadow: 0 6px 20px rgba(0, 255, 108, 0.25);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary) !important;
+}
+
+.btn-secondary:hover {
+    border-color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.03);
+    transform: translateY(-2px);
+}
+
+/* 4. Header / Hero Section
+--------------------------------------------- */
+.hero {
+    min-height: 100vh;
+    background: radial-gradient(circle at 80% 20%, rgba(0, 255, 108, 0.07), transparent 45%),
+                radial-gradient(circle at 20% 80%, rgba(0, 255, 108, 0.02), transparent 45%),
+                var(--bg-main);
+    color: var(--text-primary);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hero__top {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero__brand h1 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin: 0;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+}
+
+.hero__brand .bold {
+    font-weight: 700;
+}
+
+.hero__nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.hero__nav ul li {
+    display: inline-block;
+    margin-left: 2rem;
+}
+
+.hero__nav ul li a {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    transition: color var(--transition-speed);
+}
+
+.hero__nav ul li a:hover {
+    color: var(--accent-glow);
+    text-decoration: none;
+}
+
+.hero__menu-toggle {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: color var(--transition-speed);
+    padding: 0;
+}
+
+.hero__menu-toggle:hover {
+    color: var(--accent-glow);
+}
+
+.hero__layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 3rem 0;
+}
+
+.hero__content {
+    flex: 1.2;
+    margin: 0;
+}
+
+.hero__headline {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.hero__subtext {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+}
+
+.hero__cta-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.hero__arrow {
+    padding-bottom: 2.5rem;
+    text-align: center;
+}
+
+.hero__arrow a {
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.hero__arrow a:hover {
+    color: var(--accent-glow);
+}
+
+.hero__arrow a i {
+    animation: bounce 2s infinite;
+}
+
+/* 5. Hero Telemetry Dashboard Component
+--------------------------------------------- */
+.hero__telemetry {
+    flex: 0.9;
+    width: 100%;
+}
+
+.telemetry-box {
+    background: rgba(24, 24, 27, 0.55);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 1.5rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+}
+
+.telemetry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 0.75rem;
+}
+
+.telemetry-dot-group {
+    display: flex;
+    gap: 0.35rem;
+}
+
+.telemetry-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.telemetry-dot.red { background-color: #ef4444; }
+.telemetry-dot.yellow { background-color: #eab308; }
+.telemetry-dot.green { background-color: #22c55e; }
+
+.telemetry-title {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-family: monospace;
+}
+
+.telemetry-status {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent-glow);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.pulse-node {
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-glow);
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+}
+
+.pulse-node::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid var(--accent-glow);
+    animation: ripple 1.8s infinite ease-out;
+}
+
+.telemetry-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.telemetry-metric {
+    background-color: rgba(9, 9, 11, 0.6);
+    border: 1px solid var(--border-subtle);
+    padding: 0.85rem;
+    border-radius: 6px;
+}
+
+.metric-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-bottom: 0.25rem;
+    font-family: monospace;
+}
+
+.metric-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: monospace;
+}
+
+.telemetry-graph-container {
+    background-color: rgba(9, 9, 11, 0.6);
+    border: 1px solid var(--border-subtle);
+    padding: 0.85rem;
+    border-radius: 6px;
+}
+
+.telemetry-svg {
+    width: 100%;
+    height: 60px;
+    margin-top: 0.5rem;
+}
+
+.telemetry-terminal {
+    background-color: #09090b;
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 0.75rem;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    height: 90px;
+    overflow-y: auto;
+    color: #38bdf8; /* terminal sky blue text */
+    text-align: left;
+}
+
+.telemetry-terminal code {
+    font-family: monospace;
+    color: inherit;
+    white-space: pre-wrap;
+}
+
+/* 6. Mobile Navigation
+--------------------------------------------- */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(9, 9, 11, 0.98);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1000;
+}
+
+.mobile-nav.is-open {
+    transform: translateX(0);
+}
+
+.mobile-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.mobile-nav ul li {
+    padding: 1.25rem 0;
+}
+
+.mobile-nav ul li a {
+    font-size: 1.75rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--transition-speed);
+}
+
+.mobile-nav ul li a:hover {
+    color: var(--accent-glow);
+}
+
+/* 7. About Section
+--------------------------------------------- */
+.about-section {
+    padding: 7rem 0;
+    border-top: 1px solid var(--border-subtle);
+    background-color: var(--bg-main);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3.5rem;
+}
+
+.about-image-wrapper {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.about-image-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(0, 255, 108, 0.1) 0%, transparent 70%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.about-image {
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--border-subtle);
+    padding: 6px;
+    background-color: var(--bg-card);
+    transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    z-index: 2;
+}
+
+.about-image:hover {
+    border-color: var(--accent-glow);
+    transform: scale(1.03);
+}
+
+.about-info .lead {
+    font-size: 1.5rem;
+    color: var(--accent-glow);
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+}
+
+.about-info p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+}
+
+.about-info p a {
+    color: var(--text-primary);
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color var(--transition-speed);
+}
+
+.about-info p a:hover {
+    color: var(--accent-glow);
+}
+
+/* 8. Bento Grid System
+--------------------------------------------- */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+}
+
+/* 9. Premium Cards (Skills & Projects)
+--------------------------------------------- */
+.bento-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    padding: 2.5rem;
+    border-radius: 12px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.4s ease, 
+                box-shadow 0.4s ease;
+    backdrop-filter: blur(8px);
+    grid-column: span 6; /* Default column span */
+    flex: none;
+    max-width: none;
+    width: auto;
+}
+
+.bento-card--large {
+    grid-column: span 8;
+}
+
+.bento-card--medium {
+    grid-column: span 4;
+}
+
+.bento-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-glow);
+    box-shadow: 0 12px 30px rgba(0, 255, 108, 0.06);
+}
+
+/* Luxury Card Separation Matrix Details (Spotlight Tracker) */
+.bento-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(800px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(0, 255, 108, 0.04), transparent 40%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.bento-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Skill Card Specifics */
+.skills-section {
+    background-color: #0b0b0d; /* Marginally off-black for section nesting */
+    border-top: 1px solid var(--border-subtle);
+    padding: 7rem 0;
+    text-align: center;
+}
+
+.skill-card__icon {
+    font-size: 2rem;
+    color: var(--accent-glow);
+    margin-bottom: 1.5rem;
+}
+
+.skill-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.5px;
+}
+
+.skill-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+/* Project / Work Showcase Specifics */
+.work-showcase {
+    padding: 7rem 0;
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+    background-color: var(--bg-main);
+}
+
+.project-card__badge {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 0.3rem 0.8rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+}
+
+.bento-card:hover .project-card__badge {
+    border-color: rgba(0, 255, 108, 0.25);
+    color: var(--accent-glow);
+    background: rgba(0, 255, 108, 0.04);
+}
+
+.project-card h3 {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.5px;
+}
+
+.project-card p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: auto; /* Push tags/links to bottom */
+}
+
+/* Tech Tags styling */
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.tech-tags span {
+    background-color: #27272a;
+    color: var(--text-primary);
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    font-family: monospace;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    border: 1px solid transparent;
+}
+
+.bento-card:hover .tech-tags span {
+    background-color: rgba(0, 255, 108, 0.05);
+    color: var(--accent-glow);
+    border-color: rgba(0, 255, 108, 0.15);
+}
+
+/* Premium Project Links */
+.project-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.project-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--accent);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.bento-card:hover .project-link::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.project-link:hover {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* 10. Contact Section
+--------------------------------------------- */
+.contact-section {
+    padding: 7rem 0;
+    border-top: 1px solid var(--border-subtle);
+    background-color: #0b0b0d;
+    text-align: center;
+    color: var(--text-primary);
+}
+
+.contact-section .lead {
+    margin-bottom: 0.5rem;
+    font-size: 1.85rem;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+.contact-section p {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.text-animate {
+    font-weight: 700;
+    color: var(--accent-glow);
+    border-bottom: 2px solid var(--accent-glow);
+    padding-bottom: 2px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.contact-section .btn {
+    margin-top: 1.5rem;
+}
+
+.contact__social {
+    margin-top: 4rem;
+    font-size: 1.75rem;
+}
+
+.contact__social a {
+    color: var(--text-muted);
+    margin: 0 0.85rem;
+    transition: color 0.3s, transform 0.3s;
+    display: inline-block;
+}
+
+.contact__social a:hover {
+    color: var(--accent-glow);
+    transform: translateY(-4px);
+}
+
+/* 11. Footer Section
+--------------------------------------------- */
+.footer-section {
+    padding: 2.5rem 0;
+    background-color: var(--bg-main);
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.footer-section p {
+    font-size: .85rem;
+    margin: 0;
+}
+
+.footer-section a {
+    color: var(--text-primary);
+    text-decoration: underline;
+    transition: color var(--transition-speed);
+}
+
+.footer-section a:hover {
+    color: var(--accent-glow);
+}
+
+.footer-section .fa-heart {
+    color: var(--accent-glow);
+    margin: 0 2px;
+    text-shadow: 0 0 5px rgba(0, 255, 108, 0.4);
+}
+
+/* 12. Animations
+--------------------------------------------- */
+@keyframes bounce {
+    0%, 20%, 60%, 100% {
+        transform: translateY(0);
+    }
+    40%, 43% {
+        transform: translateY(-20px);
+    }
+    75% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes ripple {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* 13. Responsive Media Queries
+--------------------------------------------- */
+@media (max-width: 991px) {
+    .hero__layout {
+        flex-direction: column;
+        gap: 3.5rem;
+        padding: 2rem 0 4rem;
+        text-align: center;
+    }
+    
+    .hero__content {
+        text-align: center !important;
+        flex: none;
+    }
+
+    .hero__cta-group {
+        justify-content: center;
+    }
+
+    .hero__telemetry {
+        flex: none;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .bento-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+    
+    .bento-card, .bento-card--large, .bento-card--medium {
+        grid-column: span 6;
+    }
+    
+    .hero__headline {
+        font-size: 2.75rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .hero__top {
+        padding-top: 1.5rem;
+    }
+    
+    .hero__nav {
+        display: none; /* Hide standard links, trigger hamburger */
+    }
+
+    .hero__headline {
+        font-size: 2.25rem;
+        letter-spacing: -0.5px;
+    }
+
+    .hero__subtext {
+        font-size: 1.1rem;
+    }
+
+    .hero__cta-group {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        text-align: center;
+    }
+
+    .about-info {
+        text-align: center !important;
+    }
+
+    .bento-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .bento-card {
+        padding: 2rem;
+    }
+
+    .contact-section p {
+        font-size: 1.75rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .hero__menu-toggle {
+        display: none; /* Hide menu toggler on desktop */
+    }
+    
+    .mobile-nav {
+        display: none !important;
+    }
+}
